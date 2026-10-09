@@ -28,7 +28,7 @@ describe('useLoginPage', () => {
     await handleSubmit({ username: 'admin', password: 'admin123' })
 
     expect(login).toHaveBeenCalledWith({ username: 'admin', password: 'admin123' })
-    expect(push).toHaveBeenCalledWith('/')
+    expect(push).toHaveBeenCalledWith({ name: 'home' })
   })
 
   it('does not navigate when login fails', async () => {

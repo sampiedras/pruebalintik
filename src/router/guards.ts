@@ -13,7 +13,7 @@ export function authGuard(
   }
 
   if (to.name === 'login' && authStore.isAuthenticated) {
-    return { name: 'payments' }
+    return { name: 'home' }
   }
 
   return true

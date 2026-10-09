@@ -36,11 +36,8 @@ const {
   <section class="payments-page" data-testid="payments-page">
     <header class="payments-page__hero">
       <div class="payments-page__hero-copy">
-        <p class="payments-page__eyebrow">Panel principal</p>
         <h1 class="payments-page__title">Métodos de pago</h1>
-        <p class="payments-page__subtitle">
-          Busca, activa o edita tus métodos.
-        </p>
+        <span class="payments-page__subtitle">Busca, activa o edita tus métodos.</span>
       </div>
 
       <q-btn
@@ -213,45 +210,41 @@ const {
 <style scoped>
 .payments-page {
   display: grid;
-  gap: var(--app-space-lg);
+  gap: var(--app-space-md);
 }
 
 .payments-page__hero {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: var(--app-space-md);
   flex-wrap: wrap;
-  padding: var(--app-space-xl);
-  border-radius: var(--app-radius-xl);
+  padding: var(--app-space-sm) var(--app-space-md);
+  border-radius: var(--app-radius-md);
   background:
     linear-gradient(135deg, rgb(15 118 110 / 12%), rgb(14 165 164 / 6%)),
     var(--app-color-surface);
   box-shadow: var(--app-shadow-sm);
 }
 
-.payments-page__eyebrow {
-  margin: 0 0 var(--app-space-xs);
-  color: var(--app-color-primary);
-  font-size: var(--app-font-size-sm);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.payments-page__hero-copy {
+  display: flex;
+  flex-direction: column;
 }
 
 .payments-page__title {
-  margin: 0 0 var(--app-space-sm);
+  margin: 0;
   color: var(--app-color-text);
-  font-size: clamp(1.5rem, 2.5vw, var(--app-font-size-xl));
+  font-size: var(--app-font-size-lg);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  line-height: normal;
+  letter-spacing: -0.02em;
 }
 
 .payments-page__subtitle {
   margin: 0;
-  max-width: 36rem;
   color: var(--app-color-text-muted);
-  font-size: var(--app-font-size-md);
+  font-size: var(--app-font-size-sm);
 }
 
 .payments-page__create {
@@ -261,13 +254,13 @@ const {
 
 .payments-page__panel {
   overflow: hidden;
-  border-radius: var(--app-radius-xl);
+  border-radius: var(--app-radius-md);
   background: var(--app-color-surface);
   box-shadow: var(--app-shadow-sm);
 }
 
 .payments-page__panel-header {
-  padding: var(--app-space-lg) var(--app-space-lg) 0;
+  padding: 0 var(--app-space-md) 0;
 }
 
 .payments-page__panel-header--row {
@@ -277,9 +270,9 @@ const {
 }
 
 .payments-page__panel-title {
-  margin: 0 0 var(--app-space-xs);
+  margin: 0;
   color: var(--app-color-text);
-  font-size: var(--app-font-size-lg);
+  font-size: var(--app-font-size-md);
   font-weight: 700;
 }
 
@@ -290,11 +283,11 @@ const {
 }
 
 .payments-page__panel-body {
-  padding-top: var(--app-space-md);
+  padding-top: 0;
 }
 
 .payments-page__table-section {
-  padding-top: var(--app-space-sm);
+  padding-top: 0;
 }
 
 .payments-page__table {

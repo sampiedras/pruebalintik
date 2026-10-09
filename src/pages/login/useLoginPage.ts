@@ -8,7 +8,7 @@ export function useLoginPage() {
 
   const handleSubmit = async (credentials: Credentials): Promise<void> => {
     await authStore.login(credentials)
-    await router.push('/')
+    await router.push({ name: 'home' })
   }
 
   return {

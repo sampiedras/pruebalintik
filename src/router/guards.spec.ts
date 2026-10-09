@@ -14,13 +14,14 @@ function createRoute(name: string, requiresAuth = false): RouteLocationNormalize
 describe('authGuard', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
+    sessionStorage.clear()
   })
 
   it('redirects unauthenticated users away from protected routes', () => {
     const store = useAuthStore()
     store.user = null
 
-    expect(authGuard(createRoute('payments', true), createRoute('login'))).toEqual({
+    expect(authGuard(createRoute('home', true), createRoute('login'))).toEqual({
       name: 'login',
     })
   })
@@ -29,15 +30,15 @@ describe('authGuard', () => {
     const store = useAuthStore()
     store.user = { id: 'user-1', username: 'admin' }
 
-    expect(authGuard(createRoute('payments', true), createRoute('login'))).toBe(true)
+    expect(authGuard(createRoute('home', true), createRoute('login'))).toBe(true)
   })
 
   it('redirects authenticated users away from login', () => {
     const store = useAuthStore()
     store.user = { id: 'user-1', username: 'admin' }
 
-    expect(authGuard(createRoute('login', false), createRoute('payments', true))).toEqual({
-      name: 'payments',
+    expect(authGuard(createRoute('login', false), createRoute('home', true))).toEqual({
+      name: 'home',
     })
   })
 })

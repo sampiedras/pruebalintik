@@ -14,7 +14,7 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        name: 'payments',
+        name: 'home',
         component: () => import('@/pages/payments/index.vue'),
         meta: { requiresAuth: true },
       },

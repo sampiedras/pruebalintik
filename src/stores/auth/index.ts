@@ -3,20 +3,28 @@ import { defineStore } from 'pinia'
 import { Notify } from 'quasar'
 import { loginMock } from '@/mocks/services'
 import type { Credentials, SessionUser } from '@/types/auth'
+import {
+  clearSessionUser,
+  readSessionUser,
+  writeSessionUser,
+} from '@/utils/auth-session'
 
 export const useAuthStore = defineStore('auth', () => {
-  const user = ref<SessionUser | null>(null)
+  const user = ref<SessionUser | null>(readSessionUser())
   const loading = ref(false)
 
   const isAuthenticated = computed(() => user.value !== null)
 
-  async function login(credentials: Credentials): Promise<void> {
+  const login = async (credentials: Credentials): Promise<void> => {
     loading.value = true
 
     try {
-      user.value = await loginMock(credentials)
+      const sessionUser = await loginMock(credentials)
+      user.value = sessionUser
+      writeSessionUser(sessionUser)
     } catch (error) {
       user.value = null
+      clearSessionUser()
       const message = error instanceof Error ? error.message : 'No se pudo iniciar sesión'
       Notify.create({
         type: 'negative',
@@ -29,8 +37,9 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  function logout(): void {
+  const logout = (): void => {
     user.value = null
+    clearSessionUser()
   }
 
   return {
