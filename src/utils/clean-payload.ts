@@ -1,0 +1,7 @@
+export function cleanPayload(
+  payload: Record<string, unknown>,
+): Record<string, unknown> {
+  return Object.fromEntries(
+    Object.entries(payload).filter(([, value]) => value != null && value !== ''),
+  )
+}
